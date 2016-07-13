@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter Message</title>
+</head>
+
+<body>
+    <form action="/logout" method="post">
+       <button type="submit">Logout</button>
+    </form>
+    </br>
+    <form action="/create-message" method="post">
+        <input type="text" placeholder="Write a message" name="submitMessage" size="40">
+        <button type="submit">Submit</button>
+    </form>
+    </br>
+    <form action="/delete-message" method="post">
+        <input type="number" placeholder="Message #" name="messageNum">
+        <button type="submit">Delete</button>
+    </form>
+    </br>
+    <form action="/edit-message" method="post">
+        <input type="number" placeholder="Message #" name="messageNum">
+        <input type="text" placeholder="Edit message" name="editMessage" size="40">
+        <button type="submit">Edit</button>
+    </form>
+
+    </br>
+    {{#user}}
+        Messages by {{name}}:
+    {{/user}}
+    {{^user}}
+        Messages by Anonymous:
+    {{/user}}
+
+    <ol>
+        {{#user.myMessages}}<li>{{note}}</li>{{/user.myMessages}}
+    </ol>
+</body>
+</html>
